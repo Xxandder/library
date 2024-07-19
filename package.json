@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node src/app.ts",
-    "build": "tsc",
+    "start": "node ./dist/app.js",
+    "build": "tsc --build",
     "lint": "npx eslint . --ext .js,.jsx,.ts,.tsx",
-    "prettify": "npx prettier --write \"src/**/*.ts\""
+    "prettify": "npx prettier --write \"src/**/*.ts\"",
+    "dev": "nodemon ./src/app.ts"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +22,7 @@
     "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
+    "nodemon": "^3.1.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.3"
   },
