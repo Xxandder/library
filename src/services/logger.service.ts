@@ -1,8 +1,5 @@
 import { type Logger as LibraryLogger, pino } from 'pino';
 import pretty from 'pino-pretty';
-
-// import { type Logger } from './libs/types/types.js';
-
 type LogFunction = (
     message: string,
     parameters?: Record<string, unknown>,
@@ -19,7 +16,11 @@ class LoggerService implements ILogger {
   private logger: LibraryLogger;
 
   public constructor() {
-    this.logger = pino();
+    this.logger = pino({
+      transport: {
+        target: 'pino-pretty'
+      },
+    })
 
     this.logger.info('Logger is created…');
   }
