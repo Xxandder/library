@@ -1,22 +1,23 @@
 import "dotenv/config";
-import express, { NextFunction, Request, Response } from 'express';
-import connectDB from './config/db';
-import { requestLogger } from "./middleware/request-logger.middleware";
+import express from 'express';
 import cors from 'cors';
+import connectDB from './config/db';
+import requestLogger from "./middleware/request-logger.middleware";
+import loggerService from "./services/logger.service";
 
 const app = express();
 
 const PORT = 3000;
 
-connectDB();
-
 app.use(cors());
 app.use(express.json());
+
+connectDB();
 
 app.use(requestLogger)
 
 app.use('/', ()=>{})
 
 app.listen(PORT, ()=>{
-    console.log(`Listening on port ${PORT}`)
+    loggerService.info(`Listening on port ${PORT}`)
 })

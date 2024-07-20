@@ -1,11 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
-import { LoggerService } from '../services/logger.service';
-
-const logger = new LoggerService();
+import loggerService from '../services/logger.service';
 
 const requestLogger = (req: Request, res: Response, next: NextFunction) => {
-  logger.info('Incoming request', { method: req.method, url: req.url });
+  loggerService.info('Incoming request', { method: req.method, url: req.url });
   next();
 };
 
-export { requestLogger };
+export default requestLogger;
